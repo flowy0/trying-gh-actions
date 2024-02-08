@@ -21,9 +21,14 @@ jobs:
     runs-on: ubuntu-latest
     env:
       DAY_OF_WEEK: ${{ vars.DAY_OF_WEEK }}
-      FIRST_NAME: ${{ vars.DAY_OF_WEEK }}
+      FIRST_NAME: ${{ vars.FIRST_NAME }}
     steps:
       - name: "Say Hello"
         run: echo Its $DAY_OF_WEEK, Hello $FIRST_NAME
-    
+        
+  test_access_variables_without_env_section:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Say Hello"
+        run: echo Its ${{ vars.DAY_OF_WEEK }}, Hello ${{ vars.FIRST_NAME }}
       
