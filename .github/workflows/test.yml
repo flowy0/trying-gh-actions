@@ -1,5 +1,3 @@
-env:
-  DAY_OF_WEEK: Monday
 
 on:
   push:
@@ -11,9 +9,21 @@ jobs:
     runs-on: ubuntu-latest
     env:
       Greeting: Hello
+      DAY_OF_WEEK: Monday
     steps:
       - name: "Say Hello Mona it's Monday"
         if: ${{ env.DAY_OF_WEEK == 'Monday' }}
         run: echo "$Greeting $First_Name. Today is $DAY_OF_WEEK!"
         env:
           First_Name: Mona
+
+  test_access_variables:
+    runs-on: ubuntu-latest
+    env:
+      DAY_OF_WEEK: ${{ env.DAY_OF_WEEK }}
+      FIRST_NAME: ${{ env.DAY_OF_WEEK }}
+    steps:
+      - name: "Say Hello"
+        run: echo Its $DAY_OF_WEEK, Hello $FIRST_NAME
+    
+      
