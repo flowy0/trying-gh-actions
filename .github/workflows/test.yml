@@ -31,4 +31,10 @@ jobs:
     steps:
       - name: "Say Hello"
         run: echo Its ${{ vars.DAY_OF_WEEK }}, Hello ${{ vars.FIRST_NAME }}
-      
+
+  test_access_variables_with_environment:
+    runs-on: ubuntu-latest
+    environment: test
+    steps:
+      - name: "Say Hello"
+        run: echo Its ${{ vars.DAY_OF_WEEK }}, Hello ${{ vars.FIRST_NAME }}
